@@ -1,14 +1,18 @@
 var express = require("express");
-var url = require('url');
 var routes = require("./routes");
 
 var app = express();
+// parse request body as JSON
+app.use(express.json())
+
+// set routes
 var router = express.Router()
 
 router.use(function async (req, res, next) {
-    console.log(`Incoming request method: ${req.method}`);
-    const req_path = url.parse(req.url).pathname.slice(1);
-    console.log(`on path ${req_path}`);
+    console.log(`Incoming request method ${req.method} on path ${req.url}`);
+    if (Object.keys(req.body).length !== 0) {
+        console.log(req.body);
+    };
     // attemp to get method from routes
     routes(req, res, next);
 });

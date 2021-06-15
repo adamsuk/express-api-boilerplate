@@ -40,12 +40,13 @@ var valid_req = async (req, res, next) => {
     } catch (err) {
         if (err instanceof InvalidReqError) {
             next(res.status(err.code).json({
-                status: 'error',
+                name: err.name,
                 message: err.message
             }));
         } else {
+            console.log(err);
             next(res.status(500).json({
-                status: 'error',
+                status: 'Error',
                 message: 'Something unexpected happened :/'
             }));
         };
