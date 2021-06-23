@@ -1,4 +1,4 @@
-var { InvalidReqError } = require("../../errors");
+var { InvalidReqError } = require("./../../infra/errors");
 
 var hello_world = (req, res, next) => {
     if (Object.keys(req.body).length !== 0) {

@@ -1,7 +1,7 @@
 var fs = require("fs");
 var path = require("path");
 var url = require('url');
-var { InvalidReqError, InvalidMethodError, InvalidPathError } = require("../errors");
+var { InvalidReqError, InvalidMethodError, InvalidPathError } = require("./../infra/errors");
 
 var getFilesInDirectory = async (base_path, ext) => {
     const files = await fs.promises.readdir(base_path);
@@ -30,6 +30,7 @@ var valid_req = async (req, res, next) => {
             var valid_paths = await getFilesInDirectory(path.join(__dirname, req.method), '.js');
             const req_path = url.parse(req.url).pathname.slice(1);
             if (valid_paths.includes(req_path)) {
+                // todo: must be a better way of doing this
                 require(`./${req.method}/${req_path}`)(req, res, next);
             } else {
                 throw new InvalidPathError(`Requested path '${req_path}' not found.`);
