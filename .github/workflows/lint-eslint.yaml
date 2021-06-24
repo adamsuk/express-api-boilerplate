@@ -10,5 +10,5 @@ jobs:
         with:
           node-version: 14.x
       - run: export NODE_ENV=development
-      - run: npm ci
+      - run: npm ci --include=dev
       - run: eslint "**/*.js" --ignore-pattern node_modules/
