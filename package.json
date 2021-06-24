@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "nodemon ./src/index.js",
     "test": "cross-env NODE_ENV=test jest --testTimeout=10000",
-    "start": "node src"
+    "start": "node src",
+    "lint": "./node_modules/eslint/bin/eslint.js **/*.js --ignore-pattern node_modules/",
+    "winlint": "node ./node_modules/eslint/bin/eslint.js **/*.js --ignore-pattern node_modules/"
   },
   "author": "sra405@hotmai.co.uk",
   "license": "ISC",
