@@ -11,7 +11,7 @@
   "author": "sra405@hotmai.co.uk",
   "license": "ISC",
   "dependencies": {
-    "commitizen": "^4.2.5",
+    "commitizen": "^4.2.6",
     "express": "^4.17.3",
     "joi": "^17.4.2",
     "ramda": "^0.27.1"
